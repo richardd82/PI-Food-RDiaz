@@ -8,8 +8,8 @@ const router = Router();
 // Ejemplo: const authRouter = require('./auth.js');
 
 router.use('/', recipesRoute);
-router.use('/recipes', recipesRoute);
-router.use('/:id', recipeID);
+// router.use('/recipes', recipesRoute);
+// router.use('/recipes/:id', recipeID);
 //router.use('/diet', typesRoute);
 
 // Configurar los routers

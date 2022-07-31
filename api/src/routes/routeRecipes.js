@@ -18,9 +18,7 @@ const URL = 'https://api.spoonacular.com/recipes/';
     router.get('/recipes', async (req, res) => {    
         try{    
         const getApi = await axios.get(`${URL}complexSearch?apiKey=${API_KEY}&number=20&addRecipeInformation=true`);
-        const fullData = await getApi.data.results.map(d => {
-        
-        //return res.status(200).json(fullData);
+        const fullData = await getApi.data.results.map(d => {                
             return { 
                 id: d.id,
                 title: d.title,
@@ -35,20 +33,39 @@ const URL = 'https://api.spoonacular.com/recipes/';
         //console.log(fullData);
     });
 
+  
+    router.get('/recipes/:id', async (req, res) => {
+        let id = req.params.id;
         try{
-            router.get('/recipes/:id', (req, res) => {
-                console.log('Hola mundito');
-                res.send('Hola Mundito');
-            })
+            const getApiId = await axios.get(`${URL}${id}/information?apiKey=${API_KEY}`);            
+            const dataId = await getApiId.data;
+            
+           res.status(200).json(
+            {
+                id: dataId.id,
+                image: dataId.image,
+                title: dataId.title,
+                dishTypes: dataId.dishTypes?.map(d => {return d}),
+                healthScore: dataId.healthScore,
+                diets: dataId.diets?.map(d => {return d}),
+                summary: dataId.summary.replace( /(<([^>]+)>)/ig, ''),
+                image: dataId.image,
+                steps: dataId.analyzedInstructions[0]?.steps.map((e) => e.step),
+                minutes: dataId.readyInMinutes,
+                servings: dataId.servings
+            }
+           );
         }catch(e){
-            console.log(e);
+            res.status(400).json({message: e});
         }
-// router.get('/:id', (req, res) => {
+    });
+  
+// router.get('/:id', (req, res) => { https://api.spoonacular.com/recipes/{id}/information
 //     res.send('Hola Mundito')
 // })
-// router.get('/recipes', (req, res) => {
-//     res.send('Hola Mundito')
-// })
+router.get('/', (req, res) => {
+    res.send('Hola Mundito')
+})
 
 
 
