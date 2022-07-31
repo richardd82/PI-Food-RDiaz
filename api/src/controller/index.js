@@ -3,7 +3,7 @@ const {API_KEY} = process.env;
 
 //const axios = require('axios');
 const URL = 'https://api.spoonacular.com/recipes/';
-const getData = async () => {
+const fullData = async () => {
     try{
         const getApi = await axios.get(`${URL}complexSearch?apiKey=${API_KEY}`);
         const fullData = getApi.data.results.map((d) => {
@@ -23,4 +23,4 @@ const getData = async () => {
 
 
 
-module.export = getData;
+module.export = fullData;
