@@ -10,7 +10,7 @@ module.exports = (sequelize) => {
       primaryKey: true,
       allowNull: false,
     },
-    name: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -26,11 +26,16 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,
       allowNull: true
     },
-    //Esta tabla es solo para recetas en BD
+    //Esta columna es solo para recetas en BD
     createdInDb:{                              
       type : DataTypes.BOOLEAN,                    
       allowNull: false,
       defaultValue: true
+    },
+    idDiets:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      foreignKey: true
     }
   });
 };

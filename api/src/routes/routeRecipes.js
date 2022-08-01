@@ -5,17 +5,10 @@ require('dotenv').config();
 const {API_KEY} = process.env;
 
 const router = Router();
-// try{
-//     router.get('/', (req, res) => {
-//         console.log('Hola mundito');
-//         res.send('Hola Mundito');
-//     })
-// }catch(e){
-//     console.log(e);
-// }
+
 const URL = 'https://api.spoonacular.com/recipes/';
 
-    router.get('/recipes', async (req, res) => {    
+router.get('/recipes', async (req, res) => {    
         try{    
         const getApi = await axios.get(`${URL}complexSearch?apiKey=${API_KEY}&number=20&addRecipeInformation=true`);
         const fullData = await getApi.data.results.map(d => {                
@@ -59,13 +52,43 @@ const URL = 'https://api.spoonacular.com/recipes/';
             res.status(400).json({message: e});
         }
     });
-  
-// router.get('/:id', (req, res) => { https://api.spoonacular.com/recipes/{id}/information
-//     res.send('Hola Mundito')
-// })
-router.get('/', (req, res) => {
-    res.send('Hola Mundito')
+/**
+ * Form contains 
+ * title
+ * summary
+ * healthScore
+ * steps
+ * dietsLocal
+ */
+router.post('/recipes', async (req, res) => {
+    const {title, summary, healthScore, analyzedInstructions, idDiets} = req.body;    
+    if(!title || !summary){
+        res.status(404).json({message: "The name and the summary can't be empty"});
+    }
+    else if(healthScore < 0 || healthScore > 100){
+        res.status(404).json({message: "The score can't be less than 0 or more than 100"});
+    }
+    else{        
+        try{
+            const newRecipes = await Recipes.create({
+                title,
+                summary,
+                healthScore,
+                analyzedInstructions,
+                idDiets        
+            });            
+            await newRecipes.save();
+            newRecipes.addTypes
+            return res.status(200).json(newRecipes);
+            }catch(e){
+                return e
+            }
+        }   
 })
+
+router.get('/', async (req, res) => { 
+    res.send('Hola mundito cruel');
+});
 
 
 
