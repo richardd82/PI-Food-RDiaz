@@ -3,7 +3,9 @@ import SearchBar from '../searchBar/SearchBar'
 
 const Header = () => {
   return (
-    <div>Header</div>,
+    <nav className='navbar'>
+      RECIPES
+    </nav>,
     <SearchBar />
   )
   
