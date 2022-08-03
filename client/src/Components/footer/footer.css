@@ -1,0 +1,19 @@
+footer{
+    height: 14ex;
+    background-image: url('../../assets/footer.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 3rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 7rem;
+    position: relative;
+    top: 27px;
+}
+.contentFooter{
+    font-family: 'Poppins';
+    color: aliceblue;
+    position: relative;
+    top: 40%;
+
+}

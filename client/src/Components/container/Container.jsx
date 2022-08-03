@@ -1,8 +1,12 @@
 import React from 'react'
+import './container.css'
+import AllRecipes from './AllRecipes/AllRecipes'
 
 const Container = () => {
   return (
-    <div>Container</div>
+    <div className='container'>
+      <AllRecipes />
+    </div>
   )
 }
 

@@ -1,7 +1,32 @@
-header{
-    width: fit-content;
-    background: black;
-}
 .navbar{
-    
+    width: 100%;
+    height: 6.7ex;
+    position: relative;
+    font-family: 'Square_Peg';
+    font-size: 100px;
+    font-weight: 600;
+    font-style: oblique;
+    color: #217e76;
+    background-image: url(../../assets/bannerNav2.jpg); 
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.searchbarContainer{
+    position: absolute;
+    display: inline;    
+    font-size: 32px;
+    font-weight: 400;
+    float:left;
+}
+/*----------Media Queries (MEDIUM DEVICES) ----------*/
+@media screen and (max-width: 1024px) {    
+    .navbar{
+        width: 100%;
+        height: 2.5ex;
+        background-size: contain;
+    }
+}
+/*----------Media Queries (SMALL DEVICES) ----------*/
+@media screen and (max-width: 600px) {
+     
 }

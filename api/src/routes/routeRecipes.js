@@ -10,7 +10,7 @@ const URL = 'https://api.spoonacular.com/recipes/';
 
 router.get('/recipes', async (req, res) => {    
         try{    
-        const getApi = await axios.get(`${URL}complexSearch?apiKey=${API_KEY}&number=20&addRecipeInformation=true`);
+        const getApi = await axios.get(`${URL}complexSearch?apiKey=${API_KEY}&number=10&addRecipeInformation=true`);
         const fullData = await getApi.data.results.map(d => {                
             return { 
                 id: d.id,

@@ -1,12 +1,14 @@
 import React from 'react'
+import './header.css'
 import SearchBar from '../searchBar/SearchBar'
 
 const Header = () => {
   return (
     <nav className='navbar'>
-      RECIPES
-    </nav>,
-    <SearchBar />
+      Recipes
+      <div className='searchbarContainer'><SearchBar /></div>      
+    </nav>
+    
   )
   
     
