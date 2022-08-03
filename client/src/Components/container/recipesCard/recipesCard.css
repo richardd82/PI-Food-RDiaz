@@ -46,16 +46,6 @@
   .card img{
     border-radius: var(--radius);
   }
-  
-  
-  /*  */
-  
-  .card .card__title {
-    margin: 0;
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-top: 0.2rem;
-  }
   .card button {
     border: none;
     background: none;
@@ -87,4 +77,38 @@
   .card .watch-btn {
     flex: 1;
   }
-  
+/*----------Media Queries (MED-LARGE DEVICES) ----------*/
+@media screen and (max-width: 1740px) {    
+  .cardContainer{     
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    width: 90%;  
+    transform: scale(0.9); 
+    height: 57ex; 
+  }
+}
+/*----------Media Queries (MEDIUM DEVICES) ----------*/
+@media screen and (max-width: 1024px) {    
+  .cardContainer{     
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    width: 100%;  
+    transform: scale(0.8); 
+    height: 57ex; 
+  }
+}
+/*----------Media Queries (SMALL DEVICES) ----------*/
+@media screen and (max-width: 600px) {
+  .cardContainer{     
+    grid-template-columns: repeat(2, 1fr);
+    gap: .5rem;
+    width: 100%;
+    transform: scale(0.6);
+    height: 47ex;
+}
+  .cardTitle{
+    position: relative;
+    width: 38ex;
+    align-items: center;
+  }
+}

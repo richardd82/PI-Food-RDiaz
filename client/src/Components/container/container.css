@@ -3,3 +3,24 @@
     height: 80ex;
     background: linear-gradient(gray, white, transparent)
 }
+/*----------Media Queries (MED-LARGE DEVICES) ----------*/
+  @media screen and (max-width: 1740px) {    
+    .container{
+        height: 44ex;       
+    }
+}
+/*----------Media Queries (MEDIUM DEVICES) ----------*/
+@media screen and (max-width: 1024px) {    
+    .container{
+        height: 52ex;       
+    }
+}
+/*----------Media Queries (SMALL DEVICES) ----------*/
+@media screen and (max-width: 600px) {
+    .container{
+        height: 49ex;       
+    }
+    .containerRecipes{
+        width: 70%;
+    }
+}

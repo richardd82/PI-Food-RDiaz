@@ -16,7 +16,7 @@ export default function AllRecipes(){
 
         <div>Recipes</div>
         return(
-            <div>
+            <div className='containerRecipes'>
                 <h2 className='cardTitle'>View our Recipes</h2>
                 <div className='cardContainer'>
                 <React.StrictMode>

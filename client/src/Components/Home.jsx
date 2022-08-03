@@ -7,13 +7,12 @@ import Footer from './footer/Footer';
 const Home = () => {
   return (
    <>    
-      <Header/>
-      {/* <Container /> */}
+      <Header/>    
       <Route 
           exact
           path = '/recipes'
           component = {Container}
-        />
+        />      
       <Footer />
     </>
   )

@@ -5,7 +5,7 @@ import SearchBar from '../searchBar/SearchBar'
 const Header = () => {
   return (
     <nav className='navbar'>
-      Recipes
+     <label className="navTitle">Recipes</label> 
       <div className='searchbarContainer'><SearchBar /></div>      
     </nav>
     
