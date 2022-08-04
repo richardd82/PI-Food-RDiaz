@@ -17,6 +17,12 @@
   list-style: none;
   text-decoration: none;
   font-family: 'Poppins', 'Square_Peg';
+  --width: 295px;
+    --height: 330px;
+    --primary: #217e76;
+    --text: #c8c7c7;
+    --secondary: #f9f9f933;
+    --radius: 20px;
 }
 body {
   margin: 0;

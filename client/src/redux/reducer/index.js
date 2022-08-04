@@ -5,17 +5,17 @@ const initialState = {
     recipeDetail: {}
 }
 
-const rootReducer = (state = initialState, action) => {
-    switch(action.type){
+const rootReducer = (state = initialState, {type, payload}) => {
+    switch(type){
         case GET_ALL_RECIPES:
             return{
                 ...state,
-                recipes: action.payload
+                recipes: payload
             }
         case GET_RECIPES_BY_ID:
             return{
                 ...state,
-                detail: action.payload,
+                recipeDetail: payload,
             }
             default:
                 return state

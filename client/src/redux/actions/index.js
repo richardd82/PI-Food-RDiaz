@@ -20,6 +20,7 @@ export function getAllRecipes(){
     }
 }
 export function getRecipeById(id){
+    console.log(id);
     try{
         return async function(dispatch){
             var json = await axios.get(`http://localhost:3001/recipes/${id}`);
@@ -30,8 +31,8 @@ export function getRecipeById(id){
         return e;
     }
 }
-export const cleanRecipe = () => {
-    return {
-        type: CLEAN_RECIPE
-    } 
-}
+// export const cleanRecipe = () => {
+//     return {
+//         type: CLEAN_RECIPE
+//     } 
+// }

@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import Landing from './Components/landing/Landing.jsx';
 import Home from './Components/Home';
@@ -6,8 +6,8 @@ import RecipesDetails from '../src/Components/container/recipesDetails/RecipesDe
 
 function App() {
   return (
-    <div className="App">
     <BrowserRouter>
+    <div className="App">
       <Switch>
         <Route 
           exact
@@ -25,8 +25,8 @@ function App() {
           component = {RecipesDetails}
         /> 
       </Switch>
-    </BrowserRouter>
     </div>
+    </BrowserRouter>
   );
 }
 

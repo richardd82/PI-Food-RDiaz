@@ -1,8 +1,11 @@
 import React from 'react'
+import './searchBar.css'
 
 const SearchBar = () => {
   return (
-    <div>SearchBar</div>
+    <div className='inputContainer'>
+      <input type="text" name="recipieToSearch" />
+    </div>
     
   )
 }

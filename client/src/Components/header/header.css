@@ -11,16 +11,6 @@
     background-repeat: no-repeat;
     background-size: 100%;
 }
-.searchbarContainer{
-    position: absolute;
-    display: inline;    
-    font-size: 32px;
-    font-weight: 400;
-    float:left;
-    right: 5%;
-    top: 110%;
-    
-}
 .navTitle{
     position: absolute;    
     font-family: 'Square_Peg';

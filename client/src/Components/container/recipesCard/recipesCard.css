@@ -1,7 +1,7 @@
 .cardTitle{
     font-family: 'Square_Peg';
     font-size: 3em;
-    color: var(--primary);
+    color: auto;
 }
 
 .cardContainer{
@@ -13,12 +13,6 @@
 }
 
 .card {
-    --width: 295px;
-    --height: 330px;
-    --primary: #00b9ae;
-    --text: #c8c7c7;
-    --secondary: #f9f9f933;
-    --radius: 20px;
     color: rgb(217, 209, 209);
     font-family: Arial, Helvetica, sans-serif;
     width: var(--width);
@@ -41,7 +35,7 @@
     transition: 0.2s;
   }
   .card:hover{
-    transform: scale(1.1);
+    transform: scale(.97);
   }
   .card img{
     border-radius: var(--radius);
@@ -56,11 +50,11 @@
     padding: 0.5rem 1rem;
     font-size: 1rem;
     font-weight: bold;
-    transition: 0.2s;
+    transition: 0.5s;
   }
   .card button:hover {
     opacity: 0.8;
-    transform: scale(0.9);
+    /* transform: scale(0.2);  */
   }
   .card .add-btn {
     color: rgb(59, 57, 57);
@@ -71,7 +65,7 @@
   }
   .add-btn:hover{
     opacity: 0.8;
-    transform: scale(0.9);
+    /* transform: scale(0.2); */
   }
   
   .card .watch-btn {
