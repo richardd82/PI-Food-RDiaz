@@ -1,6 +1,6 @@
 import React, { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllRecipes } from '../../../redux/actions/index.js';
+import { getAllRecipes, getRecipesByName } from '../../../redux/actions/index.js';
 import SearchBar from '../../searchBar/SearchBar.jsx';
 import { RecipesCard } from '../recipesCard/RecipesCard.jsx';
 import { Link } from 'react-router-dom';
@@ -20,7 +20,9 @@ export default function AllRecipes(){
             <div className='containerRecipes'>
                 <h2 className='cardTitle'>View our Recipes</h2>
                 <div className='searchbarContainer'>
-                    <SearchBar />
+                    
+                    <SearchBar getRecipesByName={getRecipesByName}/>
+                    
                 </div>
                 <div className='cardContainer'>
                 <React.StrictMode>

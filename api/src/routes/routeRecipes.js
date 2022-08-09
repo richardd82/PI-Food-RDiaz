@@ -25,6 +25,27 @@ router.get('/recipes', async (req, res) => {
         }
         //console.log(fullData);
     });
+router.get(`/recipes/name`, async (req, res) => {    
+    
+    //const {name} = req.query;
+        // try{    
+            let getApi = await axios.get(`${URL}complexSearch?apiKey=${API_KEY}&number=10&addRecipeInformation=true`);            
+            getApi = getApi.data.results;
+            if(req.query.name){          
+                const byName = await getApi.filter(n => n.title.toUpperCase().includes(req.query.name.toUpperCase()))   
+                byName.length ?
+                res.status(200).json(byName):
+                res.status(404).json({mesagge: 'No existen recetas con ese nombre'});
+            }
+            else{
+                res.status(200).json(getApi);
+            }
+                         
+        // }catch(e){
+        //     return res.status(404).json({message: e})
+        // }
+        //console.log(fullData);
+    });
 
   
     router.get('/recipes/:id', async (req, res) => {
@@ -83,7 +104,7 @@ router.post('/recipes', async (req, res) => {
             }catch(e){
                 return e
             }
-        }   
+    }   
 })
 
 router.get('/', async (req, res) => { 

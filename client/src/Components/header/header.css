@@ -1,3 +1,12 @@
+nav a{
+    color: #217e76;
+    cursor: cell;
+}
+nav a:hover{
+    color: #217e76;
+    
+}
+
 .navbar{
     width: 100%;
     height: 6.7ex;
@@ -10,12 +19,14 @@
     background-image: url(../../assets/bannerNav2.jpg); 
     background-repeat: no-repeat;
     background-size: 100%;
+    box-shadow: 2px 1px 5px 5px black;
 }
 .navTitle{
     position: absolute;    
     font-family: 'Square_Peg';
     right: 45.6%;
     top: -5%;
+    cursor: pointer;
 }
 /*----------Media Queries (MED-LARGE DEVICES) ----------*/
 @media screen and (max-width: 1740px) {    

@@ -1,6 +1,6 @@
 import axios from 'axios';
 export const GET_ALL_RECIPES = "GET_ALL_RECIPES";
-// export const GET_RECIPES_BY_NAME = 'GET_RECIPES_BY_NAME';
+export const GET_RECIPES_BY_NAME = 'GET_RECIPES_BY_NAME';
 export const GET_RECIPES_BY_ID = "GET_RECIPES_BY_ID";
 export const CLEAN_RECIPE = "CLEAN_RECIPE";
 // export const GET_BY_DIET = 'GET_BY_DIET';
@@ -19,6 +19,16 @@ export function getAllRecipes(){
         });
     }
 }
+export function getRecipesByName(name){
+    try{
+        return async function (dispatch){
+            var json = await axios.get(`http://localhost:3001/recipes?name=${name}`);
+            dispatch({type: GET_RECIPES_BY_NAME, payload: json.data})
+        }
+    }catch(e){
+        console.log(e);
+    }
+}
 export function getRecipeById(id){
     console.log(id);
     try{
@@ -28,7 +38,7 @@ export function getRecipeById(id){
         };
 
     }catch(e){
-        return e;
+        console.log(e);
     }
 }
 // export const cleanRecipe = () => {

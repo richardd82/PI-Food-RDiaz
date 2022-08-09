@@ -2,6 +2,10 @@
     font-family: 'Square_Peg';
     font-size: 3em;
     color: auto;
+    width: 100%;
+    height: 6ex;
+    text-align: center;
+    margin: auto;
 }
 
 .cardContainer{
@@ -33,6 +37,7 @@
     padding-right: .6em;
     z-index: 1;
     transition: 0.2s;
+    box-shadow: 8px 10px 10px -3px black;
   }
   .card:hover{
     transform: scale(.97);
@@ -62,6 +67,7 @@
     background: var(--primary);
     border-radius: 14px;
     transition: 0.2s;
+    height: 10ex;
   }
   .add-btn:hover{
     opacity: 0.8;
@@ -70,6 +76,7 @@
   
   .card .watch-btn {
     flex: 1;
+    padding-top: 5%;
   }
 /*----------Media Queries (MED-LARGE DEVICES) ----------*/
 @media screen and (max-width: 1740px) {    

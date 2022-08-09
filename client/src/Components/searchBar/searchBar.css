@@ -1,5 +1,6 @@
 .inputContainer{
     margin-top: .5%;
+    margin-left: 5%;
     margin-bottom: 2%;
 }
 .inputContainer input{
@@ -7,14 +8,26 @@
     border-radius: 20px;
     background-image: linear-gradient(120deg,#3c3c3c,#585858);
     color: rgb(255, 255, 255);
-    cursor: pointer;
+    cursor: auto;
     padding: 7px 12px;
     font-family: 'Poppins';
     font-size: 17px;
     transition: all 1s;
-    max-width: 270px;
+    width: 17%;
     z-index: 1;
 }
-.inputContainer:focus{
+.btnSearch:hover{
     outline-color: rgb(127, 170, 170);
+    transform: scale(0.9);
+}
+.btnSearch{
+    width: 5%;
+    padding: 8px;
+    margin-left: 2em;
+    cursor: pointer;
+    border: 3px solid var(--primary);
+    border-radius: 20px;
+    background-image: linear-gradient(10deg,var(--primary),#585858);
+    color: rgb(255, 255, 255);
+    transition: all .2s;
 }

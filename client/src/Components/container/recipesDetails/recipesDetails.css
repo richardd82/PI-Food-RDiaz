@@ -1,3 +1,7 @@
+.detailsContainer{
+    height: 90ex;
+}
+
 .felxContainer{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -7,6 +11,7 @@
     font-family: 'Poppins' !important;
     height: 47ex;
     background: linear-gradient(gray, white, transparent);
+    padding-top: 5%;
 }
 .div1 { 
     grid-area: 1 / 2 / 2 / 3; 
@@ -24,7 +29,7 @@
     grid-area: 2 / 2 / 3 / 4; 
     font-family: 'Poppins';       
     align-items: center;
-    margin-top: -20px;
+    margin-top: 10%;
 }
 .detailTitle{
     position: absolute;
@@ -37,7 +42,7 @@
 
 .felxContainer img{    
     border-radius: var(--radius);
-    transform: scale(.7);
+    margin-left: 15%;
 }
 .stepByStep{
     font-family: 'Poppins';    
@@ -45,11 +50,12 @@
 
 .littleDetails{
     font-family: 'Poppins';
+    margin-bottom: .5em;
 }
 .summary{
    font-family: 'Poppins';
    text-align: justify;
-   width: 80%; 
+   width: 86%; 
    margin: auto;
    text-shadow: -1px 1px  rgb(189, 187, 187);
 }
@@ -61,13 +67,14 @@
 }
 .cardDetail {
     margin: auto;
+    margin-top: 20px;
     color: var(--primary);
     width: var(--width);
     height: 300px;
     background: linear-gradient(
         90deg,
         rgba(22, 24, 30, 0) 0%,
-        rgba(22, 24, 30, 0.7) 5%
+        rgba(22, 24, 30, 0.7) 3%
       ),
       linear-gradient(90deg, rgba(22, 24, 30, 0.4), rgba(22, 24, 30, 0.4));
     background-size: cover;
@@ -76,24 +83,24 @@
     flex-direction: column; */
     gap: 0.7rem;
     padding: .5em;
-    padding-top: .5em;
+    padding-top: 1.5em;
     padding-right: .6em;
     z-index: 1;
     transition: 0.2s;
   }
 .cardDetailSteps {
     position: absolute;
-    margin-left: 3%;
-    margin-top: 1.5%;
+    margin-left: 3%;    
+    margin-top: 1.1%;
     color: var(--primary);
     width: 551px;
-    height: 470px;
+    height: fit-content;
     background: linear-gradient(
         90deg,
         rgba(22, 24, 30, 0) 0%,
-        rgba(22, 24, 30, 0.7) 5%
+        rgba(22, 24, 30, 0.7) 2%
       ),
-      linear-gradient(90deg, rgba(22, 24, 30, 0.4), rgba(22, 24, 30, 0.4));
+      linear-gradient(90deg, rgba(32, 32, 33, 0.4), rgba(22, 24, 30, 0.4));
     background-size: cover;
     border-radius: var(--radius);
     /* display: flex;
@@ -101,7 +108,9 @@
     gap: 0.7rem;
     padding: .5em;
     padding-top: .5em;
-    padding-right: .6em;
+    padding-right: .8em;
+    padding-left: .8em;
+    padding-bottom: 1em;
     z-index: 1;
     transition: 0.2s;
   }

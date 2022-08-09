@@ -25,12 +25,11 @@ export default function RecipesDetails(){
         minutes, 
         servings 
     } = useSelector((state) => state.recipeDetail);  
-  console.log(steps)
     return(
       
       <>
       <Header />
-    <div>
+    <div className="detailsContainer">
       <div className="detailTitle"><h2 className="cardTitle">{title}</h2></div>
       <div className="felxContainer">
         <div className="div1">
