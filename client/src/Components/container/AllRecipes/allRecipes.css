@@ -27,3 +27,41 @@
 .scoreFilter{
     
 } */
+.btnReload{
+    width: 8%;
+    padding: 11px;
+    margin-top: 9px;
+    margin-left: 105em;
+    cursor: pointer;
+    border: 3px solid var(--primary);
+    border-radius: 20px;
+    background-image: linear-gradient(10deg,var(--primary),#585858);
+    color: rgb(255, 255, 255);
+    transition: all .2s;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+}
+.btnReload:hover{
+    outline-color: rgb(127, 170, 170);
+    transform: scale(0.9);
+}
+.btnCreate{
+    width: 8%;
+    padding: 11px;
+    margin-top: 9px;
+    margin-left: 25.5em;
+    cursor: pointer;
+    border: 3px solid var(--primary);
+    border-radius: 20px;
+    background-image: linear-gradient(10deg,var(--primary),#585858);
+    color: rgb(255, 255, 255);
+    transition: all .2s;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+}
+.btnCreate:hover{
+    outline-color: rgb(127, 170, 170);
+    transform: scale(0.9);
+}

@@ -18,7 +18,7 @@ export default function AllRecipes(){
     const allDiets = useSelector((state) => state.diets);
     ///////////
     const [order, setOrder] = useState('')
-    {console.log(allDiets)}
+   // {console.log(allDiets)}
     const [currentPage, setCurrentPage] = useState(1)
     const [cardsPerPage, setCardsPerPage] = useState(9)
     const indexLastCard = currentPage * cardsPerPage;
@@ -55,6 +55,7 @@ export default function AllRecipes(){
     function handleReload(e){
         e.preventDefault();
         dispatch(getAllRecipes());
+        setCurrentPage(1);
     };
     
 
@@ -68,6 +69,14 @@ export default function AllRecipes(){
                         allCards={allRecipes.length}
                         pager={pager}
                 />
+                <Link to='/create'>
+                    <div>
+                        <button className='btnCreate' onClick={e => handleReload(e)}>Create your recipe</button>
+                    </div>
+                </Link>
+                <div>
+                    <button className='btnReload' onClick={e => handleReload(e)}>Reload all Recipes</button>
+                </div>
                     <SearchBar />
                     
                 </div>
