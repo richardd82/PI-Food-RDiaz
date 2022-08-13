@@ -30,7 +30,8 @@ router.get('/recipes', async (req, res) => {
                     title: d.title,
                     image: d.image,
                     imageType: d.imageType,
-                    healthScore: d.healthScore
+                    healthScore: d.healthScore,
+                    diets: d.diets
                 }
             });
             console.log(fullData)

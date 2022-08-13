@@ -30,16 +30,20 @@ const rootReducer = (state = initialState, {type, payload}) => {
                     diets: payload,
                 }
             case ORDER_BY_DIET:
-                const allDiets = state.diets;
-                let diets = allDiets.map(function (p){
-                                    if (p.name) return p
-                            });
-                    diets = diets.filter((p) => p !== undefined);
-                    const currentDiet = payload === "selected" ? allDiets
-                    : diets.filter((p) => p.name.includes(payload))
+                const allRecipes = state.recipes;
+                const selectedDiet = allRecipes.filter(e => {
+                    let diet = "";
+                    for(let i=0; i < e.diets.length; i++){
+                        if(e.diets[i] === payload.toLowerCase()){
+                            diet = e.diets[i];
+                        }
+                    }
+                    return diet;
+                })
+                console.log(selectedDiet)
                 return{
                     ...state,
-                    diets: currentDiet,
+                    recipes: selectedDiet,
                 }
             case ORDER_BY_NAME:
                 const orderName = payload === 'asc' ?

@@ -7,15 +7,14 @@ const router = Router();
 const dietsLocal =  [
     "Gluten Free",
     "Ketogenic",
-    "Vegetarian",
-    "Lacto-Vegetarian",
-    "Ovo-Vegetarian",
+    "Lacto Ovo Vegetarian",
     "Vegan",
-    "Pescetarian",
-    "Paleo",
+    "Pescatarian",
+    "Paleolithic",
     "Primal",
-    "Low FODMAP",
-    "Whole30"                        
+    "Fodmap Friendly",
+    "Whole 30",
+    "Dairy free"                        
 ];
 
 router.get('/', async (req, res) => {
