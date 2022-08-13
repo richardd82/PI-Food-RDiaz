@@ -1,0 +1,16 @@
+.paginationContainer{
+    width: 100%;
+    height: fit-content;
+    display: inline-flex;
+    justify-content: center;
+    color: var(--primary);
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.61);
+}
+.labelNumber{
+    cursor: pointer;
+}
+.number{
+    float: left;
+    padding: 15px;
+    font-size: 1.5em;
+}

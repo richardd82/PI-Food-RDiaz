@@ -7,47 +7,50 @@ const {API_KEY} = process.env;
 const router = Router();
 
 const URL = 'https://api.spoonacular.com/recipes/';
-
+//&number=10&addRecipeInformation=true Limitar Api
 router.get('/recipes', async (req, res) => {    
+    let name = req.query.name;  
         try{    
-        const getApi = await axios.get(`${URL}complexSearch?apiKey=${API_KEY}&number=10&addRecipeInformation=true`);
-        const fullData = await getApi.data.results.map(d => {                
-            return { 
-                id: d.id,
-                title: d.title,
-                image: d.image,
-                imageType: d.imageType
-            }
-        });
-        res.status(200).json(fullData);
-        }catch(e){
-            return res.status(404).json({message: e})
+            
+            let getApi = await axios.get(`${URL}complexSearch?apiKey=${API_KEY}&number=10&addRecipeInformation=true`);
+            if(name){  
+                let recipe = getApi.data.results.filter((n) =>
+                n.title.toLowerCase().includes(name.toLowerCase())
+                );
+                console.log(recipe)
+            let recipeLength = Object.keys(recipe).length;
+            if (recipeLength === 0)
+            return res.status(404).json({ message: "Recipe not found" });
+            return res.status(200).json(recipe);
+            // getApi = getApi.data.results;       
+            // const byName = await getApi.filter(n => {
+            //     let arr = [];
+            //    n.title.toUpperCase() === req.query.name.toUpperCase() ? arr.push(n) : ""
+            //    return arr; 
+            // })   
+            // console.log(byName)
+            // byName.length ?
+            // res.status(200).json(byName):
+            // res.status(404).json({mesagge: 'No existen recetas con ese nombre'});
         }
-        //console.log(fullData);
-    });
-router.get(`/recipes/name`, async (req, res) => {    
-    
-    //const {name} = req.query;
-        // try{    
-            let getApi = await axios.get(`${URL}complexSearch?apiKey=${API_KEY}&number=10&addRecipeInformation=true`);            
-            getApi = getApi.data.results;
-            if(req.query.name){          
-                const byName = await getApi.filter(n => n.title.toUpperCase().includes(req.query.name.toUpperCase()))   
-                byName.length ?
-                res.status(200).json(byName):
-                res.status(404).json({mesagge: 'No existen recetas con ese nombre'});
+        else{
+            const fullData = await getApi.data.results.map(d => {                
+                return { 
+                    id: d.id,
+                    title: d.title,
+                    image: d.image,
+                    imageType: d.imageType
+                }
+            });
+            console.log(fullData)
+            res.status(200).json(fullData);
+        }
+    }catch(e){
+        return res.status(404).json({message: e})
             }
-            else{
-                res.status(200).json(getApi);
-            }
-                         
-        // }catch(e){
-        //     return res.status(404).json({message: e})
-        // }
+        
         //console.log(fullData);
-    });
-
-  
+    }); 
     router.get('/recipes/:id', async (req, res) => {
         let id = req.params.id;
         try{

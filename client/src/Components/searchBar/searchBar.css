@@ -31,3 +31,19 @@
     color: rgb(255, 255, 255);
     transition: all .2s;
 }
+.order{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.switchOrderbyName{
+    position: absolute;
+    display: flex;    
+    z-index: 1;
+    transform: scale(.1);
+    cursor: pointer;
+}
+/* .switchOrderbyName::after{
+    background-image: url('../../assets/Switchers/slider-on.png');
+} */
