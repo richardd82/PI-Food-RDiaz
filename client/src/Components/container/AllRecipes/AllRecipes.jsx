@@ -1,10 +1,11 @@
 import React, { useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllRecipes } from '../../../redux/actions/index.js';
+import { getAllRecipes, orderByName, orderByScore, getByDiet, orderByDiet } from '../../../redux/actions/index.js';
 import SearchBar from '../../searchBar/SearchBar.jsx';
 import { RecipesCard } from '../recipesCard/RecipesCard.jsx';
 import { Link } from 'react-router-dom';
 import Pager from '../../pager/Pager'
+import './allRecipes.css'
 
 
 
@@ -14,7 +15,10 @@ export default function AllRecipes(){
 
     const dispatch = useDispatch();
     const allRecipes = useSelector((state) => state.recipes);
-    // {console.log(allRecipies)}
+    const allDiets = useSelector((state) => state.diets);
+    ///////////
+    const [order, setOrder] = useState('')
+    {console.log(allDiets)}
     const [currentPage, setCurrentPage] = useState(1)
     const [cardsPerPage, setCardsPerPage] = useState(9)
     const indexLastCard = currentPage * cardsPerPage;
@@ -26,7 +30,32 @@ export default function AllRecipes(){
     useEffect(() => {
         dispatch(getAllRecipes());
     },[dispatch]);
+    useEffect(() => {
+        dispatch(getByDiet());
+    },[]);
 
+    function handleOrder(e) {
+        e.preventDefault();
+        dispatch(orderByName(e.target.value))
+        setCurrentPage(1);
+        setOrder(`Ordenado ${e.target.value}`)
+    };
+    function handleOrderScore(e) {
+        e.preventDefault();
+        dispatch(orderByScore(e.target.value))
+        setCurrentPage(1);
+        setOrder(`Ordenado ${e.target.value}`)
+    };
+    function handleOrderDiet(e) {
+        e.preventDefault();
+        dispatch(orderByDiet(e.target.value))
+        // setCurrentPage(1);
+        // setOrder(`Ordenado ${e.target.value}`)
+    };
+    function handleReload(e){
+        e.preventDefault();
+        dispatch(getAllRecipes());
+    };
     
 
         <div>Recipes</div>
@@ -41,6 +70,28 @@ export default function AllRecipes(){
                 />
                     <SearchBar />
                     
+                </div>
+                <div className='filtersContainer'>
+                <select className='alphabeticalFilter' onChange={e => handleOrder(e)}>
+                    <option disabled selected="selected">Order By</option>
+                    <option value='asc'>A - Z</option>
+                    <option value='desc'>Z - A</option>
+                </select>
+                <select className='dietsFilter' onChange={e => handleOrderDiet(e)}>
+                    <option disabled selected="selected">By Diet Type</option>
+                    {
+                        allDiets.map((e) => {    
+                            return(                            
+                            <option value={`${e.name}`} key={e.id}>{e.name}</option>
+                            );
+                        })
+                    }                  
+                </select>
+                <select className='scoreFilter' onChange={e => handleOrderScore(e)}>
+                    <option disabled selected="selected">By Health Score</option>
+                    <option value='asc'> - to + </option>
+                    <option value='desc'> + to - </option>
+                </select>
                 </div>
                 <div className='cardContainer'>
                 <React.StrictMode>

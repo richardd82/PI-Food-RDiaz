@@ -21,17 +21,7 @@ router.get('/recipes', async (req, res) => {
             let recipeLength = Object.keys(recipe).length;
             if (recipeLength === 0)
             return res.status(404).json({ message: "Recipe not found" });
-            return res.status(200).json(recipe);
-            // getApi = getApi.data.results;       
-            // const byName = await getApi.filter(n => {
-            //     let arr = [];
-            //    n.title.toUpperCase() === req.query.name.toUpperCase() ? arr.push(n) : ""
-            //    return arr; 
-            // })   
-            // console.log(byName)
-            // byName.length ?
-            // res.status(200).json(byName):
-            // res.status(404).json({mesagge: 'No existen recetas con ese nombre'});
+            return res.status(200).json(recipe);          
         }
         else{
             const fullData = await getApi.data.results.map(d => {                
@@ -39,7 +29,8 @@ router.get('/recipes', async (req, res) => {
                     id: d.id,
                     title: d.title,
                     image: d.image,
-                    imageType: d.imageType
+                    imageType: d.imageType,
+                    healthScore: d.healthScore
                 }
             });
             console.log(fullData)

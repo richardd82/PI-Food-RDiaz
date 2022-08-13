@@ -4,9 +4,9 @@ export const GET_RECIPES_BY_NAME = 'GET_RECIPES_BY_NAME';
 export const GET_RECIPES_BY_ID = "GET_RECIPES_BY_ID";
 export const CLEAN_RECIPE = "CLEAN_RECIPE";
 export const ORDER_BY_NAME = 'ORDER_BY_NAME';
-// export const GET_BY_DIET = 'GET_BY_DIET';
-// export const ORDER_DESC = 'ORDER_DESC';
-// export const ORDER_SCORE = 'ORDER_SCORE';
+export const ORDER_SCORE = 'ORDER_SCORE';
+export const ORDER_BY_DIET = 'ORDER_BY_DIET';
+export const GET_RECIPES_BY_DIET = 'GET_RECIPES_BY_DIET';
 
 export function getAllRecipes(){
         return async function(dispatch){       
@@ -36,12 +36,30 @@ export function getRecipeById(id){
             var json = await axios.get(`http://localhost:3001/recipes/${id}`);
             return dispatch({type: GET_RECIPES_BY_ID, payload: json.data})
         };
-
- 
+}
+export function getByDiet(){
+  //  console.log(id);
+   
+        return async function(dispatch){
+            var json = await axios.get(`http://localhost:3001/diets`);
+            return dispatch({type: GET_RECIPES_BY_DIET, payload: json.data})
+        };
+}
+export function orderByDiet(payload){
+    return{
+        type: ORDER_BY_DIET,
+        payload
+    }
 }
 export function orderByName(payload){
     return{
         type: ORDER_BY_NAME,
+        payload
+      }
+    };
+export function orderByScore(payload){
+    return{
+        type: ORDER_SCORE,
         payload
       }
     };
