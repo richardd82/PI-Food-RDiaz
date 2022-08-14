@@ -1,25 +1,60 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { getByDiet } from '../../../redux/actions';
+import Footer from '../../footer/Footer'
+import Header from '../../header/Header'
+import './createRecipes.css'
 
-const CreateRecipes = () => {
+export default function CreateRecipes () {
+
+  const dispatch = useDispatch();
+  const allDiets = useSelector((state) => state.diets);
+  useEffect(() => {
+    dispatch(getByDiet());
+  },[dispatch]);
+
   return (
-    <div>
-        <h1>CreateRecipes</h1>
+    <>
+      <Header />
+    
+      <div className='containerCreateRecpe'>
+        <h2 className='cardTitle'>Create Your Own Recipe</h2>
 
-        <div className="containerForm">
-            <form action="">
-                <input type="text" name="title" placeholder='Recipe Name'/>
-                <textarea name="summary" cols="30" rows="10" placeholder='Recipe Description' />
-                <input type="number" name="healthScore" min="1">Health Score</input>
-                <label>Wrote preparation Step by Step<button>Add Step</button></label>
-                <option value="">
-                    <select name="" id="">dieta 1</select>
-                </option>
+        <div >
+            <form action="" className='containerForm'>
+              <div className='inputsForm'>
+                <input className='inputNameRecipe' type="text" name="title" placeholder='Recipe Name'/>
+                <label className='lblScore'>Health Score</label>
+                <input className='inputScore' type="number" name="healthScore" />
+              </div>
+              <div className='textAreaSummary'>
+                <textarea className='textAreaRecipe' name="summary" cols="60" rows="60" placeholder='Recipe Description' /> 
+              </div>
+              <div className='containerListDiet'>
+              <label className='lblListDiets'>Type Diets</label>
+                <ul className='listDiets'>
+                    {
+                        allDiets.map((e) => {    
+                          return(             
+                            <li key={e.id}>
+                              <input type="checkbox" id={e.id} name={e.name} value={`${e.name}`} />
+                              <label htmlFor={e.id}>{e.name}</label>                              
+                            </li>
+                          );
+                        })
+                    }  
+                </ul>                
+              </div>
+              <div className='stepsForm'>
+                <label className='lblSteps'>How to cook Step by Step</label>
+                <button className='btnForm'>Add Step</button>
+              </div>
 
             </form>
         </div>
-
-    </div>
+        </div>
+      <Footer />
+    </>
   )
+    
 }
-
-export default CreateRecipes

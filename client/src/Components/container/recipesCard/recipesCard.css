@@ -9,11 +9,13 @@
 }
 
 .cardContainer{
-    width: 95%;
+  width: 95%;
     margin: auto;
-    display: grid;   
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
     gap: 2rem;
+    justify-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .card {

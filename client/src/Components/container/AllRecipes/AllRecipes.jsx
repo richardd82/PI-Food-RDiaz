@@ -16,11 +16,11 @@ export default function AllRecipes(){
     const dispatch = useDispatch();
     const allRecipes = useSelector((state) => state.recipes);
     const allDiets = useSelector((state) => state.diets);
-    ///////////
+    // eslint-disable-next-line
     const [order, setOrder] = useState('')
    // {console.log(allDiets)}
     const [currentPage, setCurrentPage] = useState(1)
-    const [cardsPerPage, setCardsPerPage] = useState(9)
+    const [cardsPerPage] = useState(9)
     const indexLastCard = currentPage * cardsPerPage;
     const indexFirstCard = indexLastCard - cardsPerPage;
     const allCards = allRecipes.slice(indexFirstCard, indexLastCard);
@@ -32,7 +32,7 @@ export default function AllRecipes(){
     },[dispatch]);
     useEffect(() => {
         dispatch(getByDiet());
-    },[]);
+    },[dispatch]);
 
     function handleOrder(e) {
         e.preventDefault();
@@ -69,11 +69,9 @@ export default function AllRecipes(){
                         allCards={allRecipes.length}
                         pager={pager}
                 />
-                <Link to='/create'>
-                    <div>
-                        <button className='btnCreate' onClick={e => handleReload(e)}>Create your recipe</button>
+                    <div>                
+                        <a href='/create' className='btnCreate'>Create your recipe</a>                
                     </div>
-                </Link>
                 <div>
                     <button className='btnReload' onClick={e => handleReload(e)}>Reload all Recipes</button>
                 </div>

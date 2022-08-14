@@ -18,15 +18,18 @@
 .filtersContainer select:focus{
     outline-color: white;
 }
+.dietsFilter{
+    position: relative;
+    left: 30px;
+}
+.scoreFilter{
+    position: relative;
+    left: 30px;   
+} 
 /* .alphabeticalFilter{
 
 }
-.dietsFilter{
-
-}
-.scoreFilter{
-    
-} */
+*/
 .btnReload{
     width: 8%;
     padding: 11px;
@@ -47,10 +50,10 @@
     transform: scale(0.9);
 }
 .btnCreate{
-    width: 8%;
-    padding: 11px;
+    width: 10%;
+    padding: 7px;
     margin-top: 9px;
-    margin-left: 25.5em;
+    margin-left: 20em;
     cursor: pointer;
     border: 3px solid var(--primary);
     border-radius: 20px;

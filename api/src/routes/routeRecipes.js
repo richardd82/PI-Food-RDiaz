@@ -76,7 +76,7 @@ router.get('/recipes', async (req, res) => {
  * steps
  * dietsLocal
  */
-router.post('/recipes', async (req, res) => {
+router.post('/create', async (req, res) => {
     const {title, summary, healthScore, analyzedInstructions, idDiets} = req.body;    
     if(!title || !summary){
         res.status(404).json({message: "The name and the summary can't be empty"});

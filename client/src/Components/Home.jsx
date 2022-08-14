@@ -3,7 +3,7 @@ import Header from './header/Header';
 import { Route } from 'react-router-dom';
 import Container from './container/Container';
 import Footer from './footer/Footer';
-import CreateRecipes from './container/createRecipes/CreateRecipes';
+//import CreateRecipes from './container/createRecipes/CreateRecipes';
 
 const Home = () => {
   return (
@@ -14,11 +14,11 @@ const Home = () => {
           path = '/recipes'
           component = {Container}
         />      
-      <Route 
+      {/* <Route 
           exact
           path = '/create'
           component = {CreateRecipes}
-        />      
+        />       */}       
       <Footer />
     </>
   )
