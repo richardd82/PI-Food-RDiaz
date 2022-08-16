@@ -15,16 +15,24 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     summary: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     healthScore:{
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: true,
     },
     analyzedInstructions:{
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: true
+    },
+    idDiets:{
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    image:{
+      type: DataTypes.STRING,
+      allowNull: true,
     },
     //Esta columna es solo para recetas en BD
     createdInDb:{                              
@@ -33,7 +41,7 @@ module.exports = (sequelize) => {
       defaultValue: true
     },
     idDiets:{
-      type: DataTypes.INTEGER,
+      type: DataTypes.TEXT,
       allowNull: false,
       foreignKey: true
     }

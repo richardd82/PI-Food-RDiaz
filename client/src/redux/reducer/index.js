@@ -1,4 +1,4 @@
-import { GET_ALL_RECIPES, GET_RECIPES_BY_ID, GET_RECIPES_BY_NAME, ORDER_BY_NAME, ORDER_SCORE, GET_RECIPES_BY_DIET, ORDER_BY_DIET } from "../actions";
+import { GET_ALL_RECIPES, GET_RECIPES_BY_ID, GET_RECIPES_BY_NAME, ORDER_BY_NAME, ORDER_SCORE, GET_RECIPES_BY_DIET, ORDER_BY_DIET, POST } from "../actions";
 
 const initialState = {
     recipes: [],
@@ -94,6 +94,10 @@ const rootReducer = (state = initialState, {type, payload}) => {
                     ...state,
                     recipes: orderScore
                 }
+                case POST:
+                    return{
+                        ...state,
+                    }
                 default:
                     return state;
                 }

@@ -7,6 +7,7 @@ export const ORDER_BY_NAME = 'ORDER_BY_NAME';
 export const ORDER_SCORE = 'ORDER_SCORE';
 export const ORDER_BY_DIET = 'ORDER_BY_DIET';
 export const GET_RECIPES_BY_DIET = 'GET_RECIPES_BY_DIET';
+export const POST = 'POST';
 
 export function getAllRecipes(){
         return async function(dispatch){       
@@ -63,8 +64,11 @@ export function orderByScore(payload){
         payload
       }
     };
-// export const cleanRecipe = () => {
-//     return {
-//         type: CLEAN_RECIPE
-//     } 
-// }
+export function postRecipe(payload){
+    return async function(dispatch){
+        var json = await axios.post(`http://localhost:3001/create`, payload);
+        // console.log(json + '<=========')
+        // dispatch({ type: POST, payload: json });
+        return json;
+    };
+}
