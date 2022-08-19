@@ -20,6 +20,7 @@ const rootReducer = (state = initialState, {type, payload}) => {
                     recipes: payload,
             }
             case GET_RECIPES_BY_ID:
+               //console.log(payload)
                 return{
                     ...state,
                     recipeDetail: payload,
@@ -31,19 +32,25 @@ const rootReducer = (state = initialState, {type, payload}) => {
                 }
             case ORDER_BY_DIET:
                 const allRecipes = state.recipes;
+
                 const selectedDiet = allRecipes.filter(e => {
                     let diet = "";
-                    for(let i=0; i < e.diets.length; i++){
-                        if(e.diets[i] === payload.toLowerCase()){
-                            diet = e.diets[i];
-                        }
-                    }
+                   // if (Object.keys(allRecipes).length === 0){
+                        for(let i=0; i < e.diets.length; i++){
+                            if(e.diets[i] === payload.toLowerCase()){
+                                diet = e.diets[i];
+                            }                                                                                        
+                            console.log(e.diets[i])
+                        }                        
+                    //}
+                   // else{ diet="<div>There are no dishes with this type of diet </div>"}
+                    
                     return diet;
                 })
                 console.log(selectedDiet)
                 return{
                     ...state,
-                    recipes: selectedDiet,
+                    recipes: selectedDiet,                    
                 }
             case ORDER_BY_NAME:
                 const orderName = payload === 'asc' ?

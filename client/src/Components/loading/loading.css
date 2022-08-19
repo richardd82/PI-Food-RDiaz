@@ -1,0 +1,17 @@
+
+ h1{
+    font-family: 'Square_Peg';
+    font-size: 2.5em;
+    margin-top: 15%;
+    margin-left: 47%;
+    position: absolute;
+    
+}
+.gifLoading{
+   margin-top: 2.5%;
+   margin-left: 36.5%;
+   position: absolute;
+}
+.gifLoading img{
+    width: 500px;
+} 

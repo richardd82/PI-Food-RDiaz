@@ -8,6 +8,37 @@ const router = Router();
 
 const URL = "https://api.spoonacular.com/recipes/";
 //&number=10&addRecipeInformation=true Limitar Api
+
+/***********************Get Info from Database ***********************/
+const getDbInfo = async () => {
+	try {
+		let recipesDB = await Recipes.findAll({
+			// trae data de la db
+			// include: {
+			//     model: Diet, //genero la relacion con el modelo Diet
+			//     attributes: ['name'], //Me trae toda la data del name de las dietas
+			through: {
+				attributes: [], //Traigo todo
+			},
+			// }
+		});
+		return recipesDB.map((e) => {
+			//console.log(recipesDB)
+			return objDB = {
+				id: e.id,
+				title: e.title,
+				summary: e.summary,
+				healthScore: e.healthScore,
+				steps: e.analyzedInstructions,
+				diets: e.idDiets,
+				image: e.image,
+			};
+		});
+	} catch (error) {
+		console.log(error);
+	}
+};
+/***********************Get All Info ***********************/
 router.get("/recipes", async (req, res) => {
 	let name = req.query.name;
 	try {
@@ -18,7 +49,7 @@ router.get("/recipes", async (req, res) => {
 			let recipe = getApi.data.results.filter((n) =>
 				n.title.toLowerCase().includes(name.toLowerCase())
 			);
-			console.log(recipe);
+			// console.log(recipe);
 			let recipeLength = Object.keys(recipe).length;
 			if (recipeLength === 0)
 				return res.status(404).json({ message: "Recipe not found" });
@@ -34,40 +65,71 @@ router.get("/recipes", async (req, res) => {
 					diets: d.diets,
 				};
 			});
-			console.log(fullData);
-			res.status(200).json(fullData);
+			const dbInfo = await getDbInfo();
+			console.log(dbInfo);
+			const all = fullData.concat(dbInfo);
+			//console.log(all + '=============================> ALL DATA');
+			res.status(200).json(all);
 		}
 	} catch (e) {
 		return res.status(404).json({ message: e });
 	}
 
 	//console.log(fullData);
+	const getByDb = async (id) => {
+		try {
+			const idDb = await Recipe.findByPk(id);
+
+			return {
+				id: idDb.id,
+				name: idDb.name,
+				healthScore: idDb.healthScore,
+				diets: idDb.diets,
+				summary: idDb.summary,
+				steps: idDb.steps,
+				image: idDb.image,
+				createInDB: idDb.createInDB,
+			};
+		} catch (error) {
+			console.log(error);
+		}
+	};
 });
 router.get("/recipes/:id", async (req, res) => {
 	let id = req.params.id;
 	try {
-		const getApiId = await axios.get(
-			`${URL}${id}/information?apiKey=${API_KEY}`
-		);
-		const dataId = await getApiId.data;
+		if (id.includes("-")) {
+			
+			const db = await getDbInfo(id);
+			//console.log(db)
+			res.status(200).json(db);
+		} else {
+			const getApiId = await axios.get(
+				`${URL}${id}/information?apiKey=${API_KEY}`
+			);
+			// const dbInfo = await getByDb();
+			// .concat(dbInfo);
+			const dataId = await getApiId.data
+			//console.log(dataId.title);
 
-		res.status(200).json({
-			id: dataId.id,
-			image: dataId.image,
-			title: dataId.title,
-			dishTypes: dataId.dishTypes?.map((d) => {
-				return d;
-			}),
-			healthScore: dataId.healthScore,
-			diets: dataId.diets?.map((d) => {
-				return d;
-			}),
-			summary: dataId.summary.replace(/(<([^>]+)>)/gi, ""),
-			image: dataId.image,
-			steps: dataId.analyzedInstructions[0]?.steps.map((e) => e.step),
-			minutes: dataId.readyInMinutes,
-			servings: dataId.servings,
-		});
+			res.status(200).json({
+				id: dataId.id,
+				image: dataId.image,
+				title: dataId.title,
+				dishTypes: dataId.dishTypes?.map((d) => {
+					return d;
+				}),
+				healthScore: dataId.healthScore,
+				diets: dataId.diets?.map((d) => {
+					return d;
+				}),
+				summary: dataId.summary.replace(/(<([^>]+)>)/gi, ""),
+				image: dataId.image,
+				steps: dataId.analyzedInstructions[0]?.steps.map((e) => e.step),
+				minutes: dataId.readyInMinutes,
+				servings: dataId.servings,
+			});
+		}
 	} catch (e) {
 		res.status(400).json({ message: e });
 	}
@@ -114,25 +176,25 @@ router.post("/create", async (req, res) => {
 				idDiets,
 				image,
 			});
-		// 	let dbRecipe = await newRecipes.findAll(); // {} => longitud === 0
-		// 	let dbRecipeLength = Object.keys(dbRecipe).length;
-		// 	if (dbRecipeLength !== 0) {
-		// 		let noRepeat = {};
-		// 		dbContenido = dbContenido.concat(dbRecipe);
-		// 		dbContenido = dbContenido.filter((p) =>
-		// 			noRepeat[p.id] ? false : (noRepeat[p.id] = true)
-		// 		);
-		// 	}
-		// 	return res.status(200).send("Recipe Created");
-		// } catch (error) {
-		// 	return res.status(500).json(console(error));
-		// }
-		//console.log(newRecipes.title)
-		//await newRecipes.save();
-		//newRecipes.addTypes
-		return res.json(newRecipes);
-		}catch(e){
-		    return e
+			// 	let dbRecipe = await newRecipes.findAll(); // {} => longitud === 0
+			// 	let dbRecipeLength = Object.keys(dbRecipe).length;
+			// 	if (dbRecipeLength !== 0) {
+			// 		let noRepeat = {};
+			// 		dbContenido = dbContenido.concat(dbRecipe);
+			// 		dbContenido = dbContenido.filter((p) =>
+			// 			noRepeat[p.id] ? false : (noRepeat[p.id] = true)
+			// 		);
+			// 	}
+			// 	return res.status(200).send("Recipe Created");
+			// } catch (error) {
+			// 	return res.status(500).json(console(error));
+			// }
+			//console.log(newRecipes.title)
+			//await newRecipes.save();
+			//newRecipes.addTypes
+			return res.json(newRecipes);
+		} catch (e) {
+			return e;
 		}
 	}
 });

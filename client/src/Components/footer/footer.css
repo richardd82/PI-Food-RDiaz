@@ -17,3 +17,20 @@ footer{
     top: 40%;
 
 }
+
+/*----------Media Queries (MED-LARGE DEVICES) ----------*/
+@media screen and (max-width: 1740px) {    
+
+}
+  /*----------Media Queries (MEDIUM DEVICES) ----------*/
+  @media screen and (max-width: 1024px) {    
+
+}
+/*----------Media Queries (SMALL DEVICES) ----------*/
+@media screen and (max-width: 600px) {
+footer{
+    margin: auto;
+    position: relative;
+    
+}
+}

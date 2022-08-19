@@ -31,10 +31,11 @@ export function getRecipesByName(name){
    
 }
 export function getRecipeById(id){
-    console.log(id);
+    // console.log(id);
    
         return async function(dispatch){
             var json = await axios.get(`http://localhost:3001/recipes/${id}`);
+            // console.log(json)
             return dispatch({type: GET_RECIPES_BY_ID, payload: json.data})
         };
 }

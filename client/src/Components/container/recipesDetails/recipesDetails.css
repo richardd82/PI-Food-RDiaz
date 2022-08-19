@@ -17,6 +17,7 @@
     grid-area: 1 / 2 / 2 / 3; 
     margin-bottom: -53px;
     margin-top: 20px;
+    max-width: 380px;
 }
 .div2 { 
     grid-area: 1 / 1 / 2 / 2; 
@@ -30,6 +31,7 @@
     font-family: 'Poppins';       
     align-items: center;
     margin-top: 10%;
+    text-align: center;
 }
 .detailTitle{
     position: absolute;
@@ -42,10 +44,15 @@
 
 .felxContainer img{    
     border-radius: var(--radius);
-    margin-left: 15%;
+    margin-left: 25%;
+    max-width: 550px;
+    max-height: 366px;
+}
+.imageDetail{
+    width: max-content;    
 }
 .stepByStep{
-    font-family: 'Poppins';    
+    font-family: 'Poppins';      
 }
 
 .littleDetails{
@@ -67,6 +74,7 @@
 }
 .cardDetail {
     margin: auto;
+    text-align: center;
     margin-top: 20px;
     color: var(--primary);
     width: var(--width);
@@ -90,6 +98,7 @@
   }
 .cardDetailSteps {
     position: absolute;
+    text-align: center;
     margin-left: 3%;    
     margin-top: 1.1%;
     color: var(--primary);

@@ -55,12 +55,12 @@ export default function CreateRecipes() {
 		else if (input.healthScore <= 0 || input.healthScore > 100)
 			errors.healthScore = "Must be between 0 and 100";
 		//ListDiets		
-		if (!input.idDiets.length) errors.idDiets = "Check almost one option";
+		// if (!input.idDiets.value > "") errors.idDiets = "Check almost one option";
 		//analyzedInstructions
 		if (!input.analyzedInstructions) errors.analyzedInstructions = "Can't be empty";
-		else if (input.analyzedInstructions.length < 20) {
-			errors.analyzedInstructions = "Must be more than 20 characters";
-		}
+		// else if (input.analyzedInstructions.length < 10) {
+		// 	errors.analyzedInstructions = "Must be more than 20 characters";
+		// }
 		return errors;
 	}
 
@@ -111,7 +111,7 @@ export default function CreateRecipes() {
 		const { name, value } = e.target;
 		let list = [...stepList];
 		list[index][name] = value;
-		console.log(list);
+		//console.log(list);
 		setStepList(list);
 		setInput({
 			...input,
@@ -120,48 +120,39 @@ export default function CreateRecipes() {
 	};
 	function handleSubmit(e) {
 		e.preventDefault();
-		console.log(
-			input.title +
-				"==>" +
-				input.summary +
-				"==>" +
-				input.healthScore +
-				"==>" +
-				input.analyzedInstructions +
-				"==>" +
-				input.idDiets +
-				"==>" +
-				input.image
-		);
-		//if(!Object.entries(errors.length)){
-		if (
-			input.title.length > 0 &&
-			input.summary.length > 20 &&
-			input.healthScore > 0 &&
-			input.healthScore < 101
-		) {
-			dispatch(postRecipe(sendToDB));
+		// console.log(
+		// 	input.title +
+		// 		"==>" +
+		// 		input.summary +
+		// 		"==>" +
+		// 		input.healthScore +
+		// 		"==>" +
+		// 		input.analyzedInstructions +
+		// 		"==>" +
+		// 		input.idDiets +
+		// 		"==>" +
+		// 		input.image
+		// );
+		if(Object.keys(validation(input)).length === 0){
+
+			dispatch(postRecipe(sendToDB))
 			
-		} else {
-			
-				<h1>Invalid Data</h1>
-			
+			setInput({
+				title: "",
+				summary: "",
+				healthScore: "",
+				analyzedInstructions: [],
+				idDiets: [],
+				image: "",
+			})
+			setTimeout(() => {
+				history.push("/recipes");				
+			}, 1000);
 		}
-		
-		
-		//};
-		console.log(input);
-		setInput({
-			title: "",
-			summary: "",
-			healthScore: "",
-			analyzedInstructions: [],
-			idDiets: [],
-			image: "",
-		});
-		setTimeout(() => {
-			history.push("/recipes");				
-		}, 3000);
+		//setErrors(validation(input));
+
+
+	
 		
 	}
 

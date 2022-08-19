@@ -29,8 +29,8 @@ const SearchBar = () => {
 
 
 	return (
-		<div>
-			<div className="inputContainer">
+		<div className="inputContainer">
+			<div>
 				<form id="searchForm">
 					<input
 						type="text"

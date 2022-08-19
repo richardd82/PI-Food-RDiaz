@@ -249,11 +249,13 @@
     font-size: .7em;
     color: crimson;
     position: absolute;
-    border: 3px solid rgb(255, 0, 47);
-    border-radius: 10px;
+    /* border: 1.5px solid rgb(255, 0, 47); */
+    /* border-radius: 10px; */
     outline-color: rgb(89, 89, 89);
-    box-shadow: -3px -3px 15px rgb(225, 236, 236);
+    /* box-shadow: -3px -3px 15px rgb(225, 236, 236); */
     backdrop-filter: blur(23px);
+    padding-left: 7px;
+    padding-right: 7px;
 }
 .errorTitle{
     top: 34.8%;
@@ -264,7 +266,7 @@
     left: 23%;
 }
 .errorDiets{
-    top: -7%;
+    top: -8%;
     left: 27%;
 }
 .errorSummary{

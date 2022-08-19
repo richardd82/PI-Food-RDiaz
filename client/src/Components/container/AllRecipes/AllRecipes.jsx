@@ -6,6 +6,7 @@ import { RecipesCard } from '../recipesCard/RecipesCard.jsx';
 import { Link } from 'react-router-dom';
 import Pager from '../../pager/Pager'
 import './allRecipes.css'
+import Loading from '../../loading/loading.jsx';
 
 
 
@@ -14,11 +15,12 @@ import './allRecipes.css'
 export default function AllRecipes(){
 
     const dispatch = useDispatch();
-    const allRecipes = useSelector((state) => state.recipes);
-    const allDiets = useSelector((state) => state.diets);
+    let allRecipes = useSelector((state) => state.recipes);
+    let allDiets = useSelector((state) => state.diets);     
     // eslint-disable-next-line
-    const [order, setOrder] = useState('')
-   // {console.log(allDiets)}
+    const [order, setOrder] = useState('');
+    //const [message, setMessage] = useState(false);
+//    {console.log(allRecipes)}
     const [currentPage, setCurrentPage] = useState(1)
     const [cardsPerPage] = useState(9)
     const indexLastCard = currentPage * cardsPerPage;
@@ -28,7 +30,7 @@ export default function AllRecipes(){
         setCurrentPage(pageNumber);
     };
     useEffect(() => {
-        dispatch(getAllRecipes());
+        dispatch(getAllRecipes())        
     },[dispatch]);
     useEffect(() => {
         dispatch(getByDiet());
@@ -57,10 +59,28 @@ export default function AllRecipes(){
         dispatch(getAllRecipes());
         setCurrentPage(1);
     };
-    
-
-        <div>Recipes</div>
+            
+       //if(allDiets.length){allRecipes=allDiets; setMessage(true)}
+       console.log(allRecipes)
+       // document.getElementsByClassName('modal').style = '{display: none;}';
+       if (Object.keys(allRecipes).length === 0)
+       return (
+           <>            
+            <Loading />            
+        </>
+        
+        );
+        else if(!allRecipes?.length){
+         // document.getElementsByClassName('modal')[0].style= "{display: flex;}"; 
+         
+         return (<div className="modal"><h1>Don'ty find</h1></div>)
+         //    setTimeout(() => {
+         //     }, 3000)
+             
+         }
+    else {
         return(
+            <>
             <div className='containerRecipes'>
                 <h2 className='cardTitle'>View our Recipes</h2>
                 <div className='searchbarContainer'>
@@ -80,12 +100,13 @@ export default function AllRecipes(){
                 </div>
                 <div className='filtersContainer'>
                 <select className='alphabeticalFilter' onChange={e => handleOrder(e)}>
-                    <option disabled selected="selected">Order By</option>
+                    <option disabled defaultValue="selected">Order By</option>
                     <option value='asc'>A - Z</option>
                     <option value='desc'>Z - A</option>
                 </select>
+                {/* {!allDiets.length &&  "<div>There are no dishes with this type of diet </div>"} */}
                 <select className='dietsFilter' onChange={e => handleOrderDiet(e)}>
-                    <option disabled selected="selected">By Diet Type</option>
+                    <option disabled defaultValue="selected">By Diet Type</option>
                     {
                         allDiets.map((e) => {    
                             return(                            
@@ -95,12 +116,13 @@ export default function AllRecipes(){
                     }                  
                 </select>
                 <select className='scoreFilter' onChange={e => handleOrderScore(e)}>
-                    <option disabled selected="selected">By Health Score</option>
+                    <option disabled defaultValue="selected">By Health Score</option>
                     <option value='asc'> - to + </option>
                     <option value='desc'> + to - </option>
                 </select>
                 </div>
                 <div className='cardContainer'>
+                {/* {message && <h2>Don't find Recipes</h2>} */}
                 <React.StrictMode>
                 {                                
                     allCards && allCards?.map((r) => 
@@ -110,20 +132,19 @@ export default function AllRecipes(){
                                 key={r.id}      
                                 title={r.title}
                                 image={r.image}
+                                diets={r.diets.toString().split(',')}
+                                
                             />
                         </Link>
+                        {/* {console.log(r.diets)}    */}
                     </div>
                     )
-                    
                 }
                 </React.StrictMode>
-                </div>
+                </div>                
             </div>
+            </>
         );
-
-
-
-
-
+    }
 }
 
