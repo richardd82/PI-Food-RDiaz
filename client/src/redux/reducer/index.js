@@ -15,10 +15,16 @@ const rootReducer = (state = initialState, {type, payload}) => {
             }
             case GET_RECIPES_BY_NAME:
                 //console.log(state)
-                return{
-                    ...state,
-                    recipes: payload,
-            }
+                //const filteredRecipes = state.recipes
+                // if(filteredRecipes.filter(e => e.title.includes(payload))){
+                    return{
+                        ...state,
+                        recipes: payload,
+                    }
+                // }
+                // else{
+                //     return {recipes: []}
+                // }    
             case GET_RECIPES_BY_ID:
                //console.log(payload)
                 return{

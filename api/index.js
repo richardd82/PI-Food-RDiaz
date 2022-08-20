@@ -22,7 +22,7 @@ const { conn } = require('./src/db.js');
 
 // Syncing all the models at once.
 //Alter to save de data into the database
-conn.sync({ alter: true }).then(() => {
+conn.sync({ force: true }).then(() => {
   server.listen(3001, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });

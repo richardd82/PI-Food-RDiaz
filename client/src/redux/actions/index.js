@@ -70,6 +70,7 @@ export function postRecipe(payload){
         var json = await axios.post(`http://localhost:3001/create`, payload);
         // console.log(json + '<=========')
         // dispatch({ type: POST, payload: json });
+        console.log(json)
         return json;
     };
 }

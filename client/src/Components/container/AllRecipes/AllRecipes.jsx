@@ -1,6 +1,6 @@
 import React, { useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllRecipes, orderByName, orderByScore, getByDiet, orderByDiet } from '../../../redux/actions/index.js';
+import { getAllRecipes, orderByName, orderByScore, getByDiet, orderByDiet} from '../../../redux/actions/index.js';
 import SearchBar from '../../searchBar/SearchBar.jsx';
 import { RecipesCard } from '../recipesCard/RecipesCard.jsx';
 import { Link } from 'react-router-dom';
@@ -13,10 +13,11 @@ import Loading from '../../loading/loading.jsx';
 
 
 export default function AllRecipes(){
-
+//console.log(getRecipesByName())
     const dispatch = useDispatch();
     let allRecipes = useSelector((state) => state.recipes);
-    let allDiets = useSelector((state) => state.diets);     
+    let allDiets = useSelector((state) => state.diets);    
+    //let filteredRecipes = useSelector((state) => state) 
     // eslint-disable-next-line
     const [order, setOrder] = useState('');
     //const [message, setMessage] = useState(false);
@@ -61,7 +62,7 @@ export default function AllRecipes(){
     };
             
        //if(allDiets.length){allRecipes=allDiets; setMessage(true)}
-       console.log(allRecipes)
+        // console.log(allRecipes)
        // document.getElementsByClassName('modal').style = '{display: none;}';
        if (Object.keys(allRecipes).length === 0)
        return (
@@ -133,6 +134,7 @@ export default function AllRecipes(){
                                 title={r.title}
                                 image={r.image}
                                 diets={r.diets.toString().split(',')}
+                                like={r.like}
                                 
                             />
                         </Link>

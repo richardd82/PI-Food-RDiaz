@@ -11,23 +11,23 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     title: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     summary: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     healthScore:{
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     analyzedInstructions:{
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true
     },
     idDiets:{
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     image:{
@@ -44,6 +44,10 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,
       allowNull: false,
       foreignKey: true
+    },
+    like:{
+      type: DataTypes.TEXT,
+      allowNull: false,
     }
   });
 };

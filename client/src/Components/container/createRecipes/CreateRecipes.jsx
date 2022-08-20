@@ -19,6 +19,7 @@ export default function CreateRecipes() {
 		analyzedInstructions: [],
 		idDiets: [],
 		image: "",
+		like: "",
 	});
 
 	const sendToDB = {
@@ -30,6 +31,7 @@ export default function CreateRecipes() {
 			: "",
 		idDiets: input.idDiets ? input.idDiets.join(",") : "",
 		image: input.image,
+		like: input.like,
 	};
 	function validation(input) {
 		let errors = {};
@@ -131,7 +133,9 @@ export default function CreateRecipes() {
 		// 		"==>" +
 		// 		input.idDiets +
 		// 		"==>" +
-		// 		input.image
+		// 		input.image +
+		// 		"==>" +
+		// 		input.like
 		// );
 		if(Object.keys(validation(input)).length === 0){
 
@@ -144,6 +148,7 @@ export default function CreateRecipes() {
 				analyzedInstructions: [],
 				idDiets: [],
 				image: "",
+				like: "",
 			})
 			setTimeout(() => {
 				history.push("/recipes");				
@@ -279,6 +284,9 @@ export default function CreateRecipes() {
 									</div>
 								))}
 							</div>
+						</div>
+						<div>
+							<input className="likeInput" type="text" name="like" value={input.like} onChange={(e) => handleChange(e)} />
 						</div>
 					</form>
 				</div>

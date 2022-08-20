@@ -5,7 +5,7 @@ import { Component } from "react";
 export class RecipesCard extends Component {
 	render() {
         {var diets = this.props.diets.toString().split(",").join(" | ")
-            console.log(diets)
+            // console.log(diets)
         }
 		return (
 			<>

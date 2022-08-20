@@ -73,7 +73,7 @@ export default function RecipesDetails() {
 								<label className="detailsTitle">Diets Types</label>
 								<div>{obj.diets}</div>
 								<label className="detailsTitle">Health Score</label>
-								<div>{obj.healthScore} / 100</div>
+								<div>{obj.healthScore} <p>{obj.like}</p> / 100</div>
 							</article>
 						</div>
 						<div className="div4">

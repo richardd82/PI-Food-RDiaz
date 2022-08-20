@@ -32,6 +32,7 @@ const getDbInfo = async () => {
 				steps: e.analyzedInstructions,
 				diets: e.idDiets,
 				image: e.image,
+				like: e.like,
 			};
 		});
 	} catch (error) {
@@ -78,7 +79,7 @@ router.get("/recipes", async (req, res) => {
 	//console.log(fullData);
 	const getByDb = async (id) => {
 		try {
-			const idDb = await Recipe.findByPk(id);
+			const idDb = await Recipes.findByPk(id);
 
 			return {
 				id: idDb.id,
@@ -135,20 +136,22 @@ router.get("/recipes/:id", async (req, res) => {
 	}
 });
 router.post("/create", async (req, res) => {
-	console.log(
-		req.body.title +
-			" ********** " +
-			req.body.summary +
-			" ********** " +
-			req.body.healthScore +
-			" ********** " +
-			req.body.analyzedInstructions +
-			" ********** " +
-			req.body.idDiets +
-			" ********** " +
-			req.body.image +
-			" ********** "
-	);
+	// console.log(
+	// 	req.body.title +
+	// 		" ********** " +
+	// 		req.body.summary +
+	// 		" ********** " +
+	// 		req.body.healthScore +
+	// 		" ********** " +
+	// 		req.body.analyzedInstructions +
+	// 		" ********** " +
+	// 		req.body.idDiets +
+	// 		" ********** " +
+	// 		req.body.image +
+	// 		" ********** " +
+	// 		req.body.like +
+	// 		" ********** "
+	// );
 	console.log(req.body);
 	let {
 		title,
@@ -157,6 +160,7 @@ router.post("/create", async (req, res) => {
 		analyzedInstructions,
 		idDiets,
 		image,
+		like
 	} = req.body;
 	if (!title || !summary) {
 		res
@@ -175,6 +179,7 @@ router.post("/create", async (req, res) => {
 				analyzedInstructions,
 				idDiets,
 				image,
+				like,
 			});
 			// 	let dbRecipe = await newRecipes.findAll(); // {} => longitud === 0
 			// 	let dbRecipeLength = Object.keys(dbRecipe).length;
