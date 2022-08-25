@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2f1dd3bb.css",
+    "main.js": "/static/js/main.7a655271.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/introRecipes.mp4": "/static/media/introRecipes.d01a2886dd5589cd255d.mp4",
+    "static/media/cookingLoading.gif": "/static/media/cookingLoading.0a09a82ad6327d552cef.gif",
+    "static/media/bannerNav2.jpg": "/static/media/bannerNav2.b24cc22f986f3d7998c4.jpg",
+    "static/media/Poppins-Light.ttf": "/static/media/Poppins-Light.7641a0f76ca9ef6c252c.ttf",
+    "static/media/footer.jpg": "/static/media/footer.73fabf318bd7250ef028.jpg",
+    "static/media/SquarePeg-Regular.ttf": "/static/media/SquarePeg-Regular.381be1381bbd94205c6f.ttf",
+    "static/media/bannerNav.jpg": "/static/media/bannerNav.a07036dd8a6ff462e639.jpg",
+    "index.html": "/index.html",
+    "main.2f1dd3bb.css.map": "/static/css/main.2f1dd3bb.css.map",
+    "main.7a655271.js.map": "/static/js/main.7a655271.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2f1dd3bb.css",
+    "static/js/main.7a655271.js"
+  ]
+}
