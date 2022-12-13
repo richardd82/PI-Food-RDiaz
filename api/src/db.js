@@ -5,23 +5,24 @@ const path = require("path");
 const {DB_DIALECT, DB_USER, DB_PASSWORD, PGPORT, DB_HOST, DB_NAME } = process.env;
 
 
-// const sequelize = new Sequelize(`mysql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/food`, {
-//   logging: false, // set to console.log to see the raw SQL queries
-//   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-// });
+const sequelize = new Sequelize(`${DB_DIALECT}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${PGPORT}/${DB_NAME}`,
+{
+  logging: false, // set to console.log to see the raw SQL queries
+  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+});
 
-const sequelize = new Sequelize(
-	// `${DB_DIALECT}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
-	`${DB_DIALECT}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${PGPORT}/${DB_NAME}`,
-	// `${DB_DIALECT}://${{ DB_USER }}:${{ DB_PASSWORD }}@${{ DB_HOST }}:${{ PGPORT }}/${{ DB_NAME }}`,
-	{
-	  logging: false, // set to console.log to see the raw SQL queries
-	  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-	}
-  );
+// const sequelize = new Sequelize(
+// 	// `${DB_DIALECT}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
+// 	`${DB_DIALECT}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${PGPORT}/${DB_NAME}`,
+// 	// `${DB_DIALECT}://${{ DB_USER }}:${{ DB_PASSWORD }}@${{ DB_HOST }}:${{ PGPORT }}/${{ DB_NAME }}`,
+// 	{
+// 	  logging: false, // set to console.log to see the raw SQL queries
+// 	  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+// 	}
+//   );
 
 
-//Funcionaba para local
+//Funcionaba para local MySQL
 // const sequelize = new Sequelize('food', 'root', '12345678',{
 	
 	
