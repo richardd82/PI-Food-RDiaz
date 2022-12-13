@@ -44,7 +44,7 @@ router.get("/recipes", async (req, res) => {
 	let name = req.query.name;
 	try {
 		let getApi = await axios.get(
-			`${URL}complexSearch?apiKey=${API_KEY}&number=10&addRecipeInformation=true`
+			`${URL}complexSearch?apiKey=${API_KEY}&number=20&addRecipeInformation=true`
 		);
 		if (name) {
 			let recipe = getApi.data.results.filter((n) =>
