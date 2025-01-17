@@ -7,10 +7,15 @@ const {DB_DIALECT, DB_USER, DB_PASSWORD, DB_PORT, DB_HOST, DB_NAME } = process.e
 
 const sequelize = new Sequelize(`${DB_DIALECT}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
 {
-	host: process.env.DB_HOST, // Host proporcionado por Railway
+	host: process.env.DB_HOST || 'containers-us-west-159.railway.app',, // Host proporcionado por Railway
 	port: process.env.DB_PORT || 3306, 
-	logging: false, // set to console.log to see the raw SQL queries
-	native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+	dialect: 'mysql', // Dialecto
+    	logging: console.log, // Mostrar logs SQL
+    	dialectOptions: {
+      	ssl: {
+        	require: true, // Activa conexiones seguras si Railway lo requiere
+        	rejectUnauthorized: false, // Acepta certificados autofirmados
+      	},
 });
 
 // const sequelize = new Sequelize(
