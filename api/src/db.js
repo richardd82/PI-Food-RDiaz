@@ -16,6 +16,7 @@ const sequelize = new Sequelize(`${DB_DIALECT}://${DB_USER}:${DB_PASSWORD}@${DB_
         	require: true, // Activa conexiones seguras si Railway lo requiere
         	rejectUnauthorized: false, // Acepta certificados autofirmados
       	},
+		}
 });
 
 // const sequelize = new Sequelize(
