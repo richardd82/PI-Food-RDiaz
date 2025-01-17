@@ -7,7 +7,7 @@ const {DB_DIALECT, MYSQLUSER, MYSQLPASSWORD, MYSQLPORT, MYSQLHOST, MYSQLDATABASE
 
 const sequelize = new Sequelize(`${DB_DIALECT}://${MYSQLUSER}:${MYSQLPASSWORD}@${MYSQLHOST}:${MYSQLPORT}/${MYSQLDATABASE}`,
 {
-	host: process.env.MYSQLHOST || 'api-food.richadd82.dev', // Host proporcionado por Railway
+	host: process.env.MYSQLHOST || 'db-food.richadd82.dev', // Host proporcionado por Railway
 	port: process.env.MYSQLPORT || 3306, 
 	dialect: 'mysql', // Dialecto
     	logging: console.log, // Mostrar logs SQL
