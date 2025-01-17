@@ -2,13 +2,13 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
-const {DB_DIALECT, DB_USER, DB_PASSWORD, DB_PORT, DB_HOST, DB_NAME } = process.env;
+const {DB_DIALECT, MYSQLUSER, MYSQL_ROOT_PASSWORD, MYSQLPORT, MYSQLHOST, MYSQL_DATABASE } = process.env;
 
 
-const sequelize = new Sequelize(`${DB_DIALECT}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
+const sequelize = new Sequelize(`${DB_DIALECT}://${MYSQLUSER}:${MYSQL_ROOT_PASSWORD}@${MYSQLHOST}:${MYSQLPORT}/${MYSQL_DATABASE}`,
 {
-	host: process.env.DB_HOST || 'api-food.richadd82.dev', // Host proporcionado por Railway
-	port: process.env.DB_PORT || 3306, 
+	host: process.env.MYSQLHOST || 'api-food.richadd82.dev', // Host proporcionado por Railway
+	port: process.env.MYSQLPORT || 3306, 
 	dialect: 'mysql', // Dialecto
     	logging: console.log, // Mostrar logs SQL
     	dialectOptions: {
