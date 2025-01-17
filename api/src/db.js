@@ -2,10 +2,10 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
-const {DB_DIALECT, MYSQLUSER, MYSQL_ROOT_PASSWORD, MYSQLPORT, MYSQLHOST, MYSQL_DATABASE } = process.env;
+const {DB_DIALECT, MYSQLUSER, MYSQLPASSWORD, MYSQLPORT, MYSQLHOST, MYSQLDATABASE } = process.env;
 
 
-const sequelize = new Sequelize(`${DB_DIALECT}://${MYSQLUSER}:${MYSQL_ROOT_PASSWORD}@${MYSQLHOST}:${MYSQLPORT}/${MYSQL_DATABASE}`,
+const sequelize = new Sequelize(`${DB_DIALECT}://${MYSQLUSER}:${MYSQLPASSWORD}@${MYSQLHOST}:${MYSQLPORT}/${MYSQLDATABASE}`,
 {
 	host: process.env.MYSQLHOST || 'api-food.richadd82.dev', // Host proporcionado por Railway
 	port: process.env.MYSQLPORT || 3306, 
