@@ -7,7 +7,7 @@ const {DB_DIALECT, DB_USER, DB_PASSWORD, DB_PORT, DB_HOST, DB_NAME } = process.e
 
 const sequelize = new Sequelize(`${DB_DIALECT}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
 {
-	host: process.env.DB_HOST || 'containers-us-west-159.railway.app', // Host proporcionado por Railway
+	host: process.env.DB_HOST || 'api-food.richadd82.dev', // Host proporcionado por Railway
 	port: process.env.DB_PORT || 3306, 
 	dialect: 'mysql', // Dialecto
     	logging: console.log, // Mostrar logs SQL
