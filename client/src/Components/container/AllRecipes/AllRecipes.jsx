@@ -26,7 +26,7 @@ export default function AllRecipes(){
     const [cardsPerPage] = useState(9)
     const indexLastCard = currentPage * cardsPerPage;
     const indexFirstCard = indexLastCard - cardsPerPage;
-    const allCards = allRecipes.slice(indexFirstCard, indexLastCard);
+    const allCards = allRecipes?.slice(indexFirstCard, indexLastCard);
     const pager = (pageNumber) => {
         setCurrentPage(pageNumber);
     };
