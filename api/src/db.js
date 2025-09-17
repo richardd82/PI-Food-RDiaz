@@ -2,13 +2,21 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
-const {DB_DIALECT, DB_USER, DB_PASSWORD, PGPORT, DB_HOST, DB_NAME } = process.env;
+const {DB_DIALECT, MYSQLUSER, MYSQLPASSWORD, MYSQLPORT, MYSQLHOST, MYSQLDATABASE } = process.env;
 
 
-const sequelize = new Sequelize(`${DB_DIALECT}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${PGPORT}/${DB_NAME}`,
+const sequelize = new Sequelize(`${DB_DIALECT}://${MYSQLUSER}:${MYSQLPASSWORD}@${MYSQLHOST}:${MYSQLPORT}/${MYSQLDATABASE}`,
 {
-  logging: false, // set to console.log to see the raw SQL queries
-  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+	host: process.env.MYSQLHOST || 'db-food.richadd82.dev', // Host proporcionado por Railway
+	port: process.env.MYSQLPORT || 3306, 
+	dialect: 'mysql', // Dialecto
+    	logging: console.log, // Mostrar logs SQL
+    	dialectOptions: {
+      	ssl: {
+        	require: true, // Activa conexiones seguras si Railway lo requiere
+        	rejectUnauthorized: false, // Acepta certificados autofirmados
+      	},
+		}
 });
 
 // const sequelize = new Sequelize(
